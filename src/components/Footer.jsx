@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-brand-lightestNavy mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-brand-slate">
-          <p>&copy; {new Date().getFullYear()} XLIT Consulting. All rights reserved.</p>
+          <p>&copy; 2014 XLIT Consulting. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <span className="hover:text-brand-white cursor-pointer">Privacy Policy</span>
             <span className="hover:text-brand-white cursor-pointer">Terms of Service</span>

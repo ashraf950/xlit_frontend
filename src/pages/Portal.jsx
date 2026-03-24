@@ -18,9 +18,7 @@ const Portal = () => {
     department: '',
     location: '',
     requirements: '',
-    description: '',
-    responsibilities: '',
-    qualifications: ''
+    description: ''
   });
   const [status, setStatus] = useState({ loading: false, success: false, error: '' });
 
@@ -70,9 +68,7 @@ const Portal = () => {
       department: '', 
       location: '', 
       requirements: '', 
-      description: '',
-      responsibilities: '',
-      qualifications: ''
+      description: ''
     });
     setActiveView('form');
   };
@@ -84,9 +80,7 @@ const Portal = () => {
       department: job.department,
       location: job.location,
       requirements: job.requirements.join(', '),
-      description: job.description,
-      responsibilities: job.responsibilities ? job.responsibilities.join('\n') : '',
-      qualifications: job.qualifications ? job.qualifications.join('\n') : ''
+      description: job.description
     });
     setActiveView('form');
   };
@@ -109,10 +103,11 @@ const Portal = () => {
     setStatus({ loading: true, success: false, error: '' });
     
     const payload = {
-      ...formData,
+      title: formData.title,
+      department: formData.department,
+      location: formData.location,
       requirements: formData.requirements.split(',').map(r => r.trim()).filter(r => r),
-      responsibilities: formData.responsibilities.split('\n').map(r => r.trim()).filter(r => r),
-      qualifications: formData.qualifications.split('\n').map(r => r.trim()).filter(r => r)
+      description: formData.description
     };
 
     try {
@@ -174,7 +169,7 @@ const Portal = () => {
       )}
 
       {/* Sidebar Navigator */}
-      <div className={`w-64 bg-[#1E293B]/50 border-r border-[#334155] flex flex-col ${mobileMenuOpen ? 'fixed left-0 top-16 z-50' : 'hidden md:flex'}`}>
+      <div className={`w-64 bg-[#1E293B]/50 border-r border-[#334155] flex flex-col overflow-hidden ${mobileMenuOpen ? 'fixed left-0 top-16 z-50' : 'hidden md:flex'}`}>
         <div className="p-6 border-b border-[#334155]/50 md:block hidden">
           <h2 className="text-lg font-bold text-white uppercase tracking-wider">Admin Workspace</h2>
         </div>
@@ -302,6 +297,11 @@ const Portal = () => {
                 </div>
 
                 <div>
+                  <label className="block text-[#94A3B8] text-sm font-medium mb-2">Job Location *</label>
+                  <input required type="text" className="w-full bg-[#334155]/30 border border-[#64748B]/30 text-white rounded px-4 py-3 focus:outline-none focus:border-[#06B6D4]" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} placeholder="e.g. New York, NY / Remote" />
+                </div>
+
+                <div>
                   <label className="block text-[#94A3B8] text-sm font-medium mb-2">Technical Skills / Tags (comma separated)</label>
                   <textarea required rows="2" className="w-full bg-[#334155]/30 border border-[#64748B]/30 text-white rounded px-4 py-3 focus:outline-none focus:border-[#06B6D4]" value={formData.requirements} onChange={e => setFormData({...formData, requirements: e.target.value})} placeholder="e.g. React.js, Node.js, Cloud Architecture..." />
                 </div>
@@ -309,16 +309,6 @@ const Portal = () => {
                 <div>
                   <label className="block text-[#94A3B8] text-sm font-medium mb-2">Job Summary (Opening Hook)</label>
                   <textarea required rows="3" className="w-full bg-[#334155]/30 border border-[#64748B]/30 text-white rounded px-4 py-3 focus:outline-none focus:border-[#06B6D4]" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} placeholder="We are seeking a visionary engineer to..." />
-                </div>
-
-                <div>
-                  <label className="block text-[#94A3B8] text-sm font-medium mb-2">What You'll Do (Responsibilities - One per line)</label>
-                  <textarea rows="6" className="w-full bg-[#334155]/30 border border-[#64748B]/30 text-white rounded px-4 py-3 focus:outline-none focus:border-[#06B6D4]" value={formData.responsibilities} onChange={e => setFormData({...formData, responsibilities: e.target.value})} placeholder="Develop responsive components...&#10;Optimize performance...&#10;Collaborate with cross-functional teams..." />
-                </div>
-
-                <div>
-                  <label className="block text-[#94A3B8] text-sm font-medium mb-2">Expertise You'll Bring (Qualifications - One per line)</label>
-                  <textarea rows="6" className="w-full bg-[#334155]/30 border border-[#64748B]/30 text-white rounded px-4 py-3 focus:outline-none focus:border-[#06B6D4]" value={formData.qualifications} onChange={e => setFormData({...formData, qualifications: e.target.value})} placeholder="4+ years of React experience...&#10;Deep knowledge of ES6+...&#10;Familiarity with CI/CD tools..." />
                 </div>
 
                 <div className="pt-4 flex gap-4">

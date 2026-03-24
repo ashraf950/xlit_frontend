@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
+import logo from '../assets/xlit_logo.jpg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -34,17 +35,26 @@ const Login = () => {
   };
 
   return (
-    <div className="py-24 min-h-[80vh] flex items-center justify-center">
+    <div className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-brand-off-white">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transform scale-105"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=80')" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/80 via-brand-slate/70 to-brand-navy/80 z-10" />
+      
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md"
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-md z-20 px-4"
       >
-        <div className="glass-panel p-8 md:p-12 shadow-2xl">
+        <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 md:p-12 shadow-2xl rounded-3xl hover:bg-white/15 transition-all duration-500">
           <div className="text-center mb-8">
-            <Lock className="w-12 h-12 text-brand-accent mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-brand-white">Client Portal</h2>
-            <p className="text-brand-slate mt-2">Authorized personnel only</p>
+            <div className="flex justify-center mb-6">
+              <img src={logo} alt="xlIT Logo" className="h-16 w-auto drop-shadow-lg" />
+            </div>
+            <h2 className="text-4xl font-black text-white mb-2">Client Portal</h2>
+            <p className="text-white/80">Secure access for authorized teams</p>
           </div>
 
           {error && (
@@ -55,22 +65,24 @@ const Login = () => {
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label className="block text-brand-lightSlate text-sm font-medium mb-2">Email Address</label>
+              <label className="block text-white/90 text-sm font-semibold mb-2">Email Address</label>
               <input 
                 type="email" 
                 required 
-                className="w-full bg-brand-lightestNavy/30 border border-brand-slate/30 text-brand-white rounded px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors"
+                className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-cyan focus:bg-white/15 transition-all duration-300 placeholder-white/50"
+                placeholder="hello@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             
             <div>
-              <label className="block text-brand-lightSlate text-sm font-medium mb-2">Password</label>
+              <label className="block text-white/90 text-sm font-semibold mb-2">Password</label>
               <input 
                 type="password" 
                 required 
-                className="w-full bg-brand-lightestNavy/30 border border-brand-slate/30 text-brand-white rounded px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors"
+                className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-brand-cyan focus:bg-white/15 transition-all duration-300 placeholder-white/50"
+                placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -79,7 +91,7 @@ const Login = () => {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full btn-primary flex justify-center py-3"
+              className="w-full bg-brand-cyan hover:bg-white text-white hover:text-brand-navy rounded-lg px-6 py-3 font-bold tracking-widest uppercase transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Authenticating...' : 'Secure Login'}
             </button>
