@@ -339,6 +339,8 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, MapPin, CheckCircle, Mail, ArrowRight, X } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
@@ -362,7 +364,7 @@ const Careers = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/jobs');
+        const res = await axios.get(`${API_BASE}/api/jobs`);
         const fetchedJobs = res.data.data;
         setJobs(fetchedJobs);
         
@@ -503,12 +505,12 @@ const Careers = () => {
                         )}
                       </div>
 
-                      <button 
+                      {/* <button 
                         onClick={() => setSelectedJob(job)}
                         className="w-full flex items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-2.5 md:py-3 bg-brand-navy text-white rounded-lg sm:rounded-xl font-bold tracking-wider uppercase text-[9px] sm:text-[10px] md:text-xs hover:bg-brand-cyan transition-all duration-300 shadow-premium"
                       >
                         View & Apply <ArrowRight size={12} className="sm:w-3 sm:h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      </button> */}
                     </motion.div>
                   ))}
                 </AnimatePresence>

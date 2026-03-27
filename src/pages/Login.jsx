@@ -112,6 +112,8 @@ import { motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
 import logo from '../assets/xlit_logo.jpg';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -131,7 +133,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post(`${API_BASE}/api/auth/login`, { email, password });
       localStorage.setItem('xlit_token', res.data.token);
       navigate('/portal');
     } catch (err) {
@@ -160,7 +162,7 @@ const Login = () => {
             <div className="flex justify-center mb-2 sm:mb-3">
               <img src={logo} alt="xlIT Logo" className="h-8 sm:h-10 md:h-12 w-auto drop-shadow-lg" />
             </div>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-1">Client Portal</h2>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-1">Sign In</h2>
             <p className="text-white/70 text-[10px] sm:text-xs md:text-sm">Secure access for authorized teams</p>
           </div>
 

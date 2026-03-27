@@ -2,6 +2,7 @@
 // import axios from 'axios';
 // import { motion } from 'framer-motion';
 // import { MapPin, Mail, Phone, Send, AlertCircle } from 'lucide-react';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // const fadeUp = {
 //   hidden: { opacity: 0, y: 40 },
@@ -307,7 +308,7 @@ const Contact = () => {
     setIsSubmitting(true);
     setError(null);
     try {
-      await axios.post('http://localhost:5000/api/inquiries', formState);
+        await axios.post(`${API_BASE}/api/inquiries`, formState);
       setIsSubmitting(false);
       setSubmitted(true);
       setFormState({ name: '', email: '', subject: '', message: '' });
