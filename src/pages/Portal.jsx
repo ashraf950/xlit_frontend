@@ -169,11 +169,11 @@ const Portal = () => {
       )}
 
       {/* Sidebar Navigator */}
-      <div className={`w-64 bg-[#1E293B]/50 border-r border-[#334155] flex flex-col overflow-hidden ${mobileMenuOpen ? 'fixed left-0 top-16 z-50' : 'hidden md:flex'}`}>
-        <div className="p-6 border-b border-[#334155]/50 md:block hidden">
+      <div className={`w-56 sm:w-64 bg-[#1E293B]/50 border-r border-[#334155] flex flex-col overflow-hidden ${mobileMenuOpen ? 'fixed left-0 top-16 z-50' : 'hidden md:flex'}`}>
+        <div className="p-4 sm:p-6 border-b border-[#334155]/50 md:block hidden">
           <h2 className="text-lg font-bold text-white uppercase tracking-wider">Admin Workspace</h2>
         </div>
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex-1 p-2 sm:p-4 space-y-2">
           <button 
             onClick={() => { setActiveView('list'); setMobileMenuOpen(false); }}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded transition-all ${activeView === 'list' || activeView === 'form' ? 'bg-[#06B6D4]/10 border-l-4 border-[#06B6D4] text-[#06B6D4]' : 'text-[#64748B] hover:bg-[#334155]/30'}`}
@@ -192,7 +192,7 @@ const Portal = () => {
             )}
           </button>
         </nav>
-        <div className="p-4 border-t border-[#334155]/50">
+        <div className="p-2 sm:p-4 border-t border-[#334155]/50">
           <button onClick={handleLogout} className="w-full flex items-center justify-center gap-2 px-4 py-3 text-[#64748B] hover:text-red-400 hover:bg-red-400/10 transition-colors rounded">
             <LogOut size={18} /> Logout
           </button>
@@ -200,7 +200,7 @@ const Portal = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 p-6 md:p-10 overflow-y-auto pt-[108px] md:pt-[108px]">
+      <div className="flex-1 p-4 sm:p-6 md:p-10 overflow-y-auto pt-[108px] md:pt-[108px]">
         <AnimatePresence mode="wait">
           
           {/* JOB LIST VIEW */}
@@ -214,7 +214,7 @@ const Portal = () => {
             >
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 pb-8 sm:pb-6 border-b border-[#334155]">
                 <div>
-                  <h1 className="text-3xl font-bold text-white">Published Jobs</h1>
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Published Jobs</h1>
                   <p className="text-[#64748B] mt-2">Manage your active career opportunities</p>
                 </div>
                 <button onClick={openFormForNew} className="btn-primary flex items-center justify-center gap-2 mt-4 sm:mt-0 w-full sm:w-auto min-w-[220px]">
@@ -267,7 +267,7 @@ const Portal = () => {
                 <button onClick={() => setActiveView('list')} className="flex items-center gap-2 text-[#64748B] hover:text-white transition-colors mb-6">
                   <ChevronLeft size={20} /> Back to Job List
                 </button>
-                <h1 className="text-3xl font-bold text-white border-b border-[#334155] pb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white border-b border-[#334155] pb-6">
                   {editingJobId ? 'Revise Career Opportunity' : 'Draft New Career Opportunity'}
                 </h1>
               </div>
@@ -333,7 +333,7 @@ const Portal = () => {
               className="max-w-5xl mx-auto"
             >
               <div className="mb-10 pb-6 border-b border-[#334155]">
-                <h1 className="text-3xl font-bold text-white">Client Inquiries</h1>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Client Inquiries</h1>
                 <p className="text-[#64748B] mt-2">Messages from the global contact form</p>
               </div>
 
