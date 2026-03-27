@@ -405,13 +405,13 @@ const Careers = () => {
               variants={fadeUp} 
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight mb-2 sm:mb-3 md:mb-4 leading-tight"
             >
-              Elevate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-white">Career</span>
+              Shape Your Future with XLIT
             </motion.h1>
             <motion.p 
               variants={fadeUp} 
               className="text-xs sm:text-sm md:text-base lg:text-lg text-white/80 font-light leading-relaxed max-w-2xl mx-auto px-3"
             >
-              Take A Step Ahead. We create beautiful experiences that drive successful businesses.
+              Join our team and help build the next big thing in technology and consulting.
             </motion.p>
           </motion.div>
         </div>

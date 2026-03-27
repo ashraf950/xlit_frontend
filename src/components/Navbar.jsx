@@ -194,7 +194,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)} 
               className="text-brand-cyan font-bold uppercase tracking-wider text-sm sm:text-base pt-4 sm:pt-6 border-t border-slate-100 mt-2 hover:text-brand-navy transition-colors"
             >
-              Client Login
+              Sign In
             </Link>
           </div>
         </div>
