@@ -153,36 +153,30 @@ const Login = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-[90%] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl z-20"
+        className="w-full max-w-[90%] sm:max-w-sm md:max-w-md z-20"
       >
-        <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl rounded-2xl sm:rounded-3xl hover:bg-white/15 transition-all duration-500">
-          <div className="text-center mb-5 sm:mb-6 md:mb-8">
-            <div className="flex justify-center mb-3 sm:mb-4 md:mb-6">
-              <img 
-                src={logo} 
-                alt="xlIT Logo" 
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto drop-shadow-lg" 
-              />
+        <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 sm:p-5 md:p-6 shadow-2xl rounded-2xl sm:rounded-3xl hover:bg-white/15 transition-all duration-500">
+          <div className="text-center mb-4 sm:mb-5">
+            <div className="flex justify-center mb-2 sm:mb-3">
+              <img src={logo} alt="xlIT Logo" className="h-8 sm:h-10 md:h-12 w-auto drop-shadow-lg" />
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white mb-1 sm:mb-2">Client Portal</h2>
-            <p className="text-white/70 sm:text-white/80 text-xs sm:text-sm md:text-base">Secure access for authorized teams</p>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-1">Client Portal</h2>
+            <p className="text-white/70 text-[10px] sm:text-xs md:text-sm">Secure access for authorized teams</p>
           </div>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-2.5 sm:p-3 rounded-lg mb-4 sm:mb-5 md:mb-6 text-xs sm:text-sm text-center">
+            <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-1.5 sm:p-2 rounded mb-3 sm:mb-4 text-[9px] sm:text-[10px] text-center">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-4 sm:space-y-5 md:space-y-6">
+          <form onSubmit={handleLogin} className="space-y-3 sm:space-y-4">
             <div>
-              <label className="block text-white/80 sm:text-white/90 text-[10px] sm:text-xs md:text-sm font-semibold mb-1.5 sm:mb-2">
-                Email Address
-              </label>
+              <label className="block text-white/80 text-[9px] sm:text-[10px] font-semibold mb-1">Email Address</label>
               <input 
                 type="email" 
                 required 
-                className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 md:py-3 focus:outline-none focus:border-brand-cyan focus:bg-white/15 transition-all duration-300 placeholder-white/50 text-xs sm:text-sm md:text-base"
+                className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 focus:outline-none focus:border-brand-cyan focus:bg-white/15 transition-all duration-300 placeholder-white/50 text-[10px] sm:text-xs"
                 placeholder="hello@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -190,13 +184,11 @@ const Login = () => {
             </div>
             
             <div>
-              <label className="block text-white/80 sm:text-white/90 text-[10px] sm:text-xs md:text-sm font-semibold mb-1.5 sm:mb-2">
-                Password
-              </label>
+              <label className="block text-white/80 text-[9px] sm:text-[10px] font-semibold mb-1">Password</label>
               <input 
                 type="password" 
                 required 
-                className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 md:py-3 focus:outline-none focus:border-brand-cyan focus:bg-white/15 transition-all duration-300 placeholder-white/50 text-xs sm:text-sm md:text-base"
+                className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 focus:outline-none focus:border-brand-cyan focus:bg-white/15 transition-all duration-300 placeholder-white/50 text-[10px] sm:text-xs"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -206,7 +198,7 @@ const Login = () => {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-brand-cyan hover:bg-white text-white hover:text-brand-navy rounded-lg px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 font-bold tracking-wider sm:tracking-widest uppercase transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm md:text-base"
+              className="w-full bg-brand-cyan hover:bg-white text-white hover:text-brand-navy rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed text-[9px] sm:text-[10px]"
             >
               {loading ? 'Authenticating...' : 'Secure Login'}
             </button>
